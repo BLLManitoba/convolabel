@@ -1,0 +1,18 @@
+To avoid excel converting block numbers to dates:
+
+- right-click data.csv -> open with -> notepad
+- file -> save as -> data.txt
+- open new Excel spreadsheet
+- file -> open -> data.txt
+
+- "Original data type": change to "Delimited"
+- check off "My data has headers"
+- click next
+
+- select "Comma" in the "Delimiters" window, remove "Tab"
+- next
+
+- click on the Block column
+- select "Text" in the "Column data format" window
+
+- Finish

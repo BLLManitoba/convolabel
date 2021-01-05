@@ -1,0 +1,83 @@
+Last updated by Roman on 27 June 2017
+
+Convolabel is a simple program that allows percentage-based labelling of conversational blocks. Essentially, it is a modified version of IDSLabel to label conversations instead of speech segments.
+
+---------------- HOW TO RUN (if you are on Windows): 
+
+The program requires three additional python modules - PyAudio, Matplotlib and Numpy. You can check whether you have them by typing 'pip freeze' in the command prompt. If the packages are on the list, great! If they do not appear, you can install them by typing 'python -m pip install pyaudio', 'pip install matplotlib' and 'pip install numpy' in the command prompt (see https://people.csail.mit.edu/hubert/pyaudio/).
+
+To start the program, just double-click on the 'convolabel.py' icon. If that does not work, you might need to associate python files with python executable (see https://docs.python.org/2/using/windows.html#executing-scripts). 
+
+Optional: if you do not want the black console window to pop up when you open the program, add 'w' to the extension of the file name (so that it becomes 'convolabel.pyw')
+
+---------------- HOW IT WORKS: 
+
+a) When the program opens, first thing is you need to type in the coder's name. The labels will be saved under this name. Several coders can label the same blocks independently.
+
+b) Then, click 'Load' to pull up the conversational blocks. The program assumes that you have already spliced the whole recording into blocks and will pull all the blocks from the 'output' folder automatically.
+
+c) Select a block and click 'Play' to listen to the whole block. 
+
+d) Type in percentages in the windows below. The labels are organised in the following way:
+
+Adult-directed speech   |-- Mother -----------|-- Directed at target child --|-- Directive
+Child-directed speech --|-- Other females(s)  |-- Directed at other child    |-- Nondirective
+Other child speech      |-- Male(s)
+Junk                    |-- Unsure
+Sensitive
+
+Percentages in the first column do not have to add up to 100. In all other columns, they must.
+
+e) After you have finished labelling a block, click 'Submit' (or ctrl+s). This will store the lables in the memory, but will not save the data on the hard drive! Select another block by clicking on its name in the list (or arrow up/down). Blocks that have been labelled will appear grey in the list.
+
+In other words, when you click 'Submit', it tells the program that you have done labelling and want it to remember the percentages you have typed in. 
+
+f) When you finish working, click Menu > Save the data (or 'X' button > Save). This will save the labels on the hard drive. The program will save all labels that are created by a coder in a separate file. You can see this file under the 'labelled_data' folder: it will have the coder's name and a '.pkl' extension (e.g. 'Ivan.pkl'). Thus, each coder has her own data file to work with. Do not delete or move it to another location (unless you want to reset the data). When you re-open the program, it will pull this file and load all previous labels. Each time you save the data, the program overwrites the data file with the most recent version of the progress.
+
+After you have saved the data, it is safe to exit the program. In case you forget to save, a prompt will show up asking whether you really want to exit without saving. Also, as soon as the data has been modified , a little star will appear next to the program's title. It disappears if the data is saved.
+
+Note that you have to submit the labels after each block, but you only need to click 'Save the data' once you have finished a session and want to exit (although saving a couple of times during a session does not hurt).
+
+g) If you want to export the data in an Excel file, click Menu > Export as csv. This will export the latest state of the progress in an excel spreadsheet. You can save over previous exported excel sheets, you won't lose anything. You are exporting all accumulating data from all coders every time. You can export as often as you want and delete these Excel data sheets. They do not matter for the functioning of the program.
+
+
+Other options:
+
+- to set ADS/IDS example, click Menu > 'Set ADS/IDS sample' and select a clip. This will attach the example to a recording, and you can play it when that recording is selected.
+
+
+
+---------------- HOW TO MAKE BLOCKS
+
+a) Place the folders for each recording in the 'input' directory. These folders should contain .wav recording and .cha file that has been exported using CLAN software.
+
+b) Open the program, click Menu > Make blocks
+
+c) The program will check whether each folder contains one .cha and one .wav file and whether their names match. Then, processing of the recordings will begin. You should see a lot of activity in the black terminal window that opens up with the program. When the processing is done, a message will appear on the screen and the program will load everything from the 'output' folder, where the processed blocks are stored.
+
+
+---------------- SAFETY
+
+To make sure that no data is lost by mistake, the program makes a number of backups. Each time a coder clicks 'Submit' when labelling a block, the labels for that block are saved as plain text in a log file, which can be found under the 'backups' folder. Each coder has separate log file. 
+
+Also, when saving the data, a backup of the most recent data is stored in the 'backups' directory. In case of emergency, the data can be restored from these log files and the data backups.
+
+To avoid confusion, make sure to click 'Save' button before exporting to an Excel file. If you do not save, the program will export the data only up to the last time you have saved it.
+
+
+
+---------------- HOT KEYS:
+
+- space			= play the seected block
+- control + s		= submit the labels to the memory
+- arrow up or left	= select previous block/recording
+- arrow down or right	= select next block/recording
+
+---------------- 
+
+If you have any questions or suggestions, or if something does not work, contact me (Roman) at belenyar@myumanitoba.ca
+
+The program was tested on:
+- Windows 10 64-bit, Python 2.7.13
+- Ubuntu 17.04, Python 2.7.13
+- Windows 7 64-bit, Python 2.7.12
